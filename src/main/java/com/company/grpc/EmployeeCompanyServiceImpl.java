@@ -12,7 +12,9 @@ public class EmployeeCompanyServiceImpl extends EmployeeCompanyServiceGrpc.Emplo
     @Override
     public void sendCompany(Employee employee, StreamObserver<Company> responseCompany) {
         long id = employee.getId();
-        Company company = Company.newBuilder().setCost(id).setDescription("um").setName("Hase").build();
+        Company company = Company.newBuilder().setId(id).setName("Hasee").setCost(5000)
+                .setQuantity(10).setDescription("Hellow "+id).build();
+        System.out.println(company);
         responseCompany.onNext(company);
         responseCompany.onCompleted();
     }

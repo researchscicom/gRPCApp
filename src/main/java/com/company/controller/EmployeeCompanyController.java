@@ -14,7 +14,7 @@ public class EmployeeCompanyController {
     private EmployeeCompanyClient employeeCompanyClient;
 
     @PostMapping("/produce")
-    public Company sendCompany(@RequestBody Employee employee)
+    public Object sendCompany(@RequestBody Employee employee)
     {
         com.company.grpc.employeecompany.Employee employee1 = com.company.grpc.employeecompany.
                 Employee.newBuilder().setId(employee.getId()).setAddress(employee.getAddress())
