@@ -21,10 +21,10 @@ public class EmployeeCompanyClient {
         employeeCompanyServiceBlockingStub = EmployeeCompanyServiceGrpc.newBlockingStub(managedChannel);
     }
 
-    public byte sendCompany(Employee employee)
+    public Company sendCompany(Employee employee)
     {
-        System.out.println(employee.toByteString());
+        System.out.println(employee.toString());
         Company company = employeeCompanyServiceBlockingStub.sendCompany(employee);
-        return company.toByteString();
+        return company;
     }
 }
