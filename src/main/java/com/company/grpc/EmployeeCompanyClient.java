@@ -3,10 +3,9 @@ package com.company.grpc;
 import com.company.grpc.employeecompany.Company;
 import com.company.grpc.employeecompany.Employee;
 import com.company.grpc.employeecompany.EmployeeCompanyServiceGrpc;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +17,7 @@ public class EmployeeCompanyClient {
     @PostConstruct
     private void init() {
         ManagedChannel managedChannel = ManagedChannelBuilder
-                .forAddress("localhost", 6565).usePlaintext().build();
+                .forAddress("127.0.0.1", 6565).usePlaintext().build();
 
         employeeCompanyServiceBlockingStub = EmployeeCompanyServiceGrpc.newBlockingStub(managedChannel);
     }
@@ -27,6 +26,7 @@ public class EmployeeCompanyClient {
     {
         System.out.println(employee.toString());
         Company company = employeeCompanyServiceBlockingStub.sendCompany(employee);
+        System.out.println(company);
         return company.toString();
     }
 }
