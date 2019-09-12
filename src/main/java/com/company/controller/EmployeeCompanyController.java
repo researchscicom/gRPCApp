@@ -1,9 +1,7 @@
 package com.company.controller;
 
 import com.company.grpc.EmployeeCompanyClient;
-import com.company.grpc.employeecompany.Company;
 import com.company.model.Employee;
-import com.google.protobuf.ByteString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
